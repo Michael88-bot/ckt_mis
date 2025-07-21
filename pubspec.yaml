@@ -1,0 +1,48 @@
+name: ckt_mis
+description: A Flutter WebView application for managing information systems.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_inappwebview: ^6.0.0
+  permission_handler: ^11.3.1
+  connectivity_plus: ^6.0.3
+  shared_preferences: ^2.2.2
+  url_launcher: ^6.2.6
+  firebase_core: ^2.30.0
+  cloud_firestore: ^4.17.0
+  firebase_storage: ^11.7.0
+  firebase_messaging: ^14.9.0
+  flutter_local_notifications: 15.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icon.png
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/icon.png"
+  remove_alpha_ios: true
+
+dependency_overrides:
+  flutter_local_notifications:
+    git:
+      url: https://github.com/MaikuB/flutter_local_notifications.git
+      path: flutter_local_notifications
+      ref: master

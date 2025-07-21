@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "948478793080",
+    "project_id": "ckt-mis",
+    "storage_bucket": "ckt-mis.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948478793080:android:16d1bb255220f0ad8a248d",
+        "android_client_info": {
+          "package_name": "com.example.ckt_mis"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgSb26_KSFa9CUPUimjOLJ4v-bctQm9jg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
