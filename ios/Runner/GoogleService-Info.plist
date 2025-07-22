@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.cktMis</string>
+	<string>com.studentaffair.cktnews</string>
 	<key>PROJECT_ID</key>
 	<string>ckt-mis</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:948478793080:ios:ea23de32c2b288b68a248d</string>
+	<string>1:948478793080:ios:de38501b9afc4fd68a248d</string>
+	<key>DATABASE_URL</key>
+	<string>https://ckt-mis-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

@@ -7,7 +7,7 @@ plugins {
 
 android {
     ndkVersion = "27.0.12077973"
-    namespace = "com.example.ckt_mis"
+    namespace = "com.studentaffair.cktnews"
     compileSdk = flutter.compileSdkVersion
 
     compileOptions {
@@ -21,7 +21,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.ckt_mis"
+        applicationId = "com.studentaffair.cktnews"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

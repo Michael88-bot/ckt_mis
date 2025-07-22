@@ -9,7 +9,7 @@
     
 
     <application
-        android:label="CKT MIS"
+        android:label="CKT News"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

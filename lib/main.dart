@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -25,8 +26,9 @@ void main() async {
   // Local notifications setup
   const AndroidInitializationSettings androidInit =
       AndroidInitializationSettings('@mipmap/ic_launcher');
+  const DarwinInitializationSettings iosInit = DarwinInitializationSettings();
   const InitializationSettings initSettings =
-      InitializationSettings(android: androidInit);
+      InitializationSettings(android: androidInit, iOS: iosInit);
   await flutterLocalNotificationsPlugin.initialize(initSettings);
 
   // Create notification channel for Android 8+
@@ -47,6 +49,16 @@ void main() async {
     badge: true,
     sound: true,
   );
+
+  // Request notification permission on iOS
+  if (Platform.isIOS) {
+    await FirebaseMessaging.instance.requestPermission(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+  }
+
   runApp(const MyApp());
 }
 
@@ -168,7 +180,14 @@ class _MyAppState extends State<MyApp> {
   Future<void> _fetchUnreadNewsCount() async {}
 
   void _initFirebaseMessaging() async {
-    await FirebaseMessaging.instance.requestPermission();
+    // Request permission for iOS (redundant but safe)
+    if (Platform.isIOS) {
+      await FirebaseMessaging.instance.requestPermission(
+        alert: true,
+        badge: true,
+        sound: true,
+      );
+    }
     String? token = await FirebaseMessaging.instance.getToken();
     print('FCM Token: $token'); // Print token for debugging
     await FirebaseMessaging.instance.subscribeToTopic('all');
@@ -177,21 +196,25 @@ class _MyAppState extends State<MyApp> {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
+      AppleNotification? apple = message.notification?.apple;
 
       // Show local notification for foreground messages
-      if (notification != null && android != null) {
+      if (notification != null &&
+          ((android != null && !kIsWeb && Platform.isAndroid) ||
+              (apple != null && Platform.isIOS))) {
         await flutterLocalNotificationsPlugin.show(
           notification.hashCode,
           notification.title ?? 'Notification',
           notification.body ?? '',
-          const NotificationDetails(
-            android: AndroidNotificationDetails(
+          NotificationDetails(
+            android: const AndroidNotificationDetails(
               'default_channel',
               'Default',
               importance: Importance.max,
               priority: Priority.high,
               icon: '@mipmap/ic_launcher',
             ),
+            iOS: const DarwinNotificationDetails(),
           ),
         );
       }
@@ -573,7 +596,7 @@ class _MyAppState extends State<MyApp> {
                     decoration: BoxDecoration(
                       color: Colors.red.shade700,
                       borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.black26,
                           blurRadius: 5,
@@ -581,9 +604,9 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ],
                     ),
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Icon(Icons.wifi_off, color: Colors.white, size: 15),
                         SizedBox(width: 6),
                         Text(

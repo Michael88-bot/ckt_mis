@@ -1,4 +1,4 @@
-package com.example.ckt_mis
+package com.studentaffair.cktnews
 
 import io.flutter.embedding.android.FlutterActivity
 

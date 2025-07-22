@@ -1,15 +1,16 @@
 {
   "project_info": {
     "project_number": "948478793080",
+    "firebase_url": "https://ckt-mis-default-rtdb.firebaseio.com",
     "project_id": "ckt-mis",
     "storage_bucket": "ckt-mis.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:948478793080:android:16d1bb255220f0ad8a248d",
+        "mobilesdk_app_id": "1:948478793080:android:a6d918855c05707d8a248d",
         "android_client_info": {
-          "package_name": "com.example.ckt_mis"
+          "package_name": "com.studentaffair.cktnews"
         }
       },
       "oauth_client": [],
