@@ -32,15 +32,17 @@ void main() async {
   await flutterLocalNotificationsPlugin.initialize(initSettings);
 
   // Create notification channel for Android 8+
-  const AndroidNotificationChannel channel = AndroidNotificationChannel(
-    'default_channel',
-    'Default',
-    importance: Importance.max,
-  );
-  await flutterLocalNotificationsPlugin
-      .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
-      ?.createNotificationChannel(channel);
+  if (Platform.isAndroid) {
+    const AndroidNotificationChannel channel = AndroidNotificationChannel(
+      'default_channel',
+      'Default',
+      importance: Importance.max,
+    );
+    await flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.createNotificationChannel(channel);
+  }
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
@@ -115,32 +117,14 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> requestAllPermissions() async {
-    final notificationStatus = await Permission.notification.request();
-    final storageStatus = await Permission.storage.request();
-    final manageStorageStatus =
-        await Permission.manageExternalStorage.request();
-
-    if (notificationStatus.isDenied ||
-        storageStatus.isDenied ||
-        manageStorageStatus.isDenied) {
-      if (mounted && !_showSplash) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              title: const Text('Permissions Required'),
-              content: const Text(
-                  'This app needs notification and storage permissions to work properly. Please allow them in settings.'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('OK'),
-                ),
-              ],
-            ),
-          );
-        });
-      }
+    if (Platform.isIOS) {
+      // Only request notification permission on iOS
+      await Permission.notification.request();
+    } else if (Platform.isAndroid) {
+      // Request notification and storage permissions on Android
+      await Permission.notification.request();
+      await Permission.storage.request();
+      await Permission.manageExternalStorage.request();
     }
   }
 
@@ -624,4 +608,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-// <-- this is the only thing at the end, no extra semicolon!
