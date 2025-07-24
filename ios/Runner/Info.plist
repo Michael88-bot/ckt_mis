@@ -52,5 +52,19 @@
     </array>
     <key>FirebaseAppDelegateProxyEnabled</key>
     <true/>
+    <!-- Permissions and WebView support -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+    <key>NSCameraUsageDescription</key>
+    <string>Camera access is needed for uploads.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Photo library access is needed for uploads.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Microphone access is needed for uploads.</string>
+    <key>NSUserNotificationUsageDescription</key>
+    <string>This app uses notifications to keep you updated.</string>
 </dict>
 </plist>
