@@ -8,6 +8,8 @@ project 'Runner', {
   'Release' => :release,
 }
 
+require File.expand_path(File.join('..', 'Flutter', 'podhelper'), __FILE__)
+
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
