@@ -12,7 +12,7 @@ target 'Runner' do
   use_frameworks!
   use_modular_headers!
 
-  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  install_all_flutter_pods(File.dirname(File.realpath(__FILE__)))
 
   # Post-install processing for permission_handler
   post_install do |installer|
