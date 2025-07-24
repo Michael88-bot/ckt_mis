@@ -1,7 +1,5 @@
-# Uncomment this line to define a global platform for your project
 platform :ios, '12.0'
 
-# CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
 project 'Runner', {
@@ -9,17 +7,6 @@ project 'Runner', {
   'Profile' => :release,
   'Release' => :release,
 }
-
-def flutter_installation
-  # Prepare symlinks folder. We use symlinks to avoid having Podfile.lock
-  # referring to absolute paths on developers' machines.
-  symlink_dir = File.expand_path('.symlinks', __dir__)
-  FileUtils.mkdir_p(symlink_dir)
-end
-
-require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), Dir.pwd)
-
-flutter_installation
 
 target 'Runner' do
   use_frameworks!
