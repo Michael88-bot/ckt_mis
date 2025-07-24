@@ -8,12 +8,11 @@ project 'Runner', {
   'Release' => :release,
 }
 
+install! 'cocoapods', :deterministic_uuids => false
+
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
-
-  # Flutter Pod install hook
-  install! 'cocoapods', :deterministic_uuids => false
 
   # Post-install processing for permission_handler
   post_install do |installer|
