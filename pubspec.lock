@@ -315,10 +315,10 @@ packages:
     description:
       path: flutter_local_notifications
       ref: master
-      resolved-ref: "56fbd450ca34afb035f1aa2180bee7e7740f75df"
+      resolved-ref: ff0aa0088d0ee6e58089f77ddfeff3283c6a94b0
       url: "https://github.com/MaikuB/flutter_local_notifications.git"
     source: git
-    version: "19.3.1"
+    version: "19.4.0"
   flutter_local_notifications_linux:
     dependency: transitive
     description:
@@ -698,10 +698,10 @@ packages:
     dependency: "direct main"
     description:
       name: url_launcher
-      sha256: "9d06212b1362abc2f0f0d78e6f09f726608c74e3b9462e8368bb03314aa8d603"
+      sha256: f6a7e5c4835bb4e3026a04793a4199ca2d14c739ec378fdfe23fc8075d0439f8
       url: "https://pub.dev"
     source: hosted
-    version: "6.3.1"
+    version: "6.3.2"
   url_launcher_android:
     dependency: transitive
     description:
