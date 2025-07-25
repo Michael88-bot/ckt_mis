@@ -1,4 +1,4 @@
-name: CKT_News
+name: ckt_news
 description: A Flutter WebView application for managing information systems.
 publish_to: 'none'
 version: 1.0.0+1
