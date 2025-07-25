@@ -18,7 +18,7 @@ target 'Runner' do
   use_modular_headers!
 
   # Comment out plugin install for now
-  install_all_flutter_pods(File.dirname(File.realpath(__FILE__)))
+  #install_all_flutter_pods(File.dirname(File.realpath(__FILE__)))
 
   # Post-install processing for permission_handler
   post_install do |installer|
