@@ -11,7 +11,7 @@ project 'Runner', {
 install! 'cocoapods', :deterministic_uuids => false
 
 # Temporarily comment out podhelper require to allow workflow to generate missing files
- require File.expand_path(File.join('..', 'Flutter', 'podhelper'), __FILE__)
+#require File.expand_path(File.join('..', 'Flutter', 'podhelper'), __FILE__)
 
 target 'Runner' do
   use_frameworks!
