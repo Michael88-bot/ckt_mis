@@ -12,8 +12,12 @@ jobs:
         run: |
           git clone https://github.com/flutter/flutter.git -b stable --depth 1
           echo "$PWD/flutter/bin" >> $GITHUB_PATH
+      - name: Get dependencies
+        run: flutter pub get
       - name: Generate iOS files
         run: flutter create .
+      - name: List podhelper.rb
+        run: ls -l ios/Flutter/podhelper.rb
       - name: Upload ios folder as artifact
         uses: actions/upload-artifact@v4
         with:
