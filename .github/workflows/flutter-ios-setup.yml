@@ -12,6 +12,10 @@ jobs:
         run: |
           git clone https://github.com/flutter/flutter.git -b stable --depth 1
           echo "$PWD/flutter/bin" >> $GITHUB_PATH
+      - name: Remove existing ios folder
+        run: rm -rf ios
+      - name: Create iOS folder and register plugins
+        run: flutter create .
       - name: Get dependencies
         run: flutter pub get
       - name: Build iOS to trigger plugin registration
