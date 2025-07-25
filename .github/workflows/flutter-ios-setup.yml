@@ -14,8 +14,8 @@ jobs:
           echo "$PWD/flutter/bin" >> $GITHUB_PATH
       - name: Get dependencies
         run: flutter pub get
-      - name: Generate iOS files
-        run: flutter create .
+      - name: Build iOS to trigger plugin registration
+        run: flutter build ios --no-codesign
       - name: List podhelper.rb
         run: ls -l ios/Flutter/podhelper.rb
       - name: Upload ios folder as artifact
